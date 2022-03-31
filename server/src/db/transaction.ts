@@ -77,12 +77,9 @@ export const filterOutExistingTransactions = async (transactions: Transaction[])
   if (transactions.length === 0) {
     return [];
   }
-  console.log(transactions.map(transaction => transaction.sourceReference));
   const sqlQuery = `SELECT source_reference FROM "transactions" WHERE source_reference in (${transactions.map((transaction, index) => "$" + (index + 1)).join(", ")})`;
   const params = transactions.map(transaction => transaction.sourceReference);
   const existingTransactionSourceReferences = (await query(sqlQuery, params) as any[])
     .map(existingTransaction => existingTransaction.source_reference);
-  console.log("existingTransactionSourceReferences", existingTransactionSourceReferences);
-  console.log('transactions', transactions);
   return transactions.filter(transaction => existingTransactionSourceReferences.indexOf(transaction.sourceReference) === -1);
 }

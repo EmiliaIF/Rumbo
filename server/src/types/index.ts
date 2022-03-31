@@ -15,7 +15,6 @@ export enum TransactionStatus {
   Rejected
 }
 
-// TODO Lägg till TimeReport även här i guess? :)
 export type TimeReport = {
   id?: number,
   email: string;
@@ -24,5 +23,3 @@ export type TimeReport = {
   hours: number;
   project_id: number;
 }
-
-//TODO: Behövs inte type project på server-sidan?

@@ -8,9 +8,7 @@ type Setting = {
 };
 
 export const getSetting = async (key: string) => {
-  console.log('get setting 123', key); 
   const sqlQuery = `SELECT * FROM public.settings WHERE key = $1`;
-  console.log(sqlQuery, [ key ]);
   const result = await query(sqlQuery, [ key ]) as Setting[];
   return result.length ? result[0].value : null;
 };

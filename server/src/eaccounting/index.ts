@@ -3,12 +3,8 @@ import fetch from "node-fetch";
 import { encode } from "js-base64";
 import { getSetting, setSetting } from '../db/setting';
 
-//https://identity.vismaonline.com/connect/authorize?client_id=sprintoswedenab&redirect_uri=https://localhost:44300/callback&scope=ea:api%20offline_access%20ea:sales%20ea:accounting&state=abc1232&response_type=code&prompt=login
-//https://eaccountingapi.vismaonline.com/v2/vouchers?$filter=year(VoucherDate) eq 2020 and month(VoucherDate) eq 12 and day(VoucherDate) eq 27
-
 export const refreshToken = async () => {
   const refreshToken = await getSetting("VISMA_REFRESH_TOKEN");
-  console.log('refreshToken', refreshToken);
 
   const response = await fetch(`${process.env.VISMA_AUTH_URI}/connect/token`, {
     method: "post",
@@ -21,7 +17,6 @@ export const refreshToken = async () => {
     body: `grant_type=refresh_token&refresh_token=${refreshToken}`,
   })
     .then((res) => res.json());
-  console.log('response', response);
 
   if (response.refresh_token) {
     await setSetting('VISMA_REFRESH_TOKEN', response.refresh_token);
