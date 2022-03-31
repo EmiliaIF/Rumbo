@@ -1,0 +1,2 @@
+const isAdminSelector = (state: any) => state.authentication.account.idTokenClaims.roles && state.authentication.account.idTokenClaims.roles.indexOf('Administrator') !== -1;
+export default isAdminSelector;

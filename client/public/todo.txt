@@ -1,0 +1,4 @@
+Server: 
+
+Skapa fil timeReports 
+lägg in i types

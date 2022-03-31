@@ -1,0 +1,27 @@
+name: rumbo-dev
+
+static_sites:
+- name: frontend
+  github:
+    repo: jonatanhallenberg/rumbo
+    branch: develop
+    deploy_on_push: true
+  build_command: npm run build
+  source_dir: client
+  output_dir: build
+  routes:
+  - path: /
+  - path: /pbr
+  - path: /hours
+  - path: /project
+  
+services:
+- name: backend
+  github:
+    repo: jonatanhallenberg/rumbo
+    branch: develop
+    deploy_on_push: true
+  source_dir: server
+  http_port: 4000
+  routes:
+  - path: /api
