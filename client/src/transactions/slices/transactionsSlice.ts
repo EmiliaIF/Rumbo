@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { moveSyntheticComments } from "typescript";
 import { getTransactions, getTransactionsMeta, postTransaction, deleteTransaction } from "../../api/crudTransactions"
 import getDescriptionsByEmail from "../../api/getDescriptionsByEmail";
 import { getVismaImport } from '../../api/getVismaImport';
@@ -106,7 +107,9 @@ const transactionsSlice = createSlice({
   reducers: {
     // standard reducer logic, with auto-generated action types per reducer
     setFilter(state, action: PayloadAction<DateFilter>) {
+      
       const year: number = action.payload.year;
+      console.log(state.meta[year].indexOf(action.payload.month));
       //If you change to year where previous month is not available, set max possible month that year
       const month = action.payload.month === 0 ? 0 : state.meta[year].indexOf(action.payload.month) > -1 ? action.payload.month : Math.max(...state.meta[year]);
       state.filter = { year, month, description: state.filter.description };
