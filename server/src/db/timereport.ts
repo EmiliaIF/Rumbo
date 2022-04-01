@@ -59,7 +59,9 @@ export const getTimeReportMeta = async (email: string) => {
                         UNION (SELECT NOW() as time)) as nested
                     GROUP BY EXTRACT(month from time), EXTRACT(year from time)
                     ORDER BY year, month`;
-    return await query(sqlQuery, [email]);
+    const res: any = await query(sqlQuery, [email]);
+    return res.map(meta => ({ year: Number(meta.year), month: Number(meta.month) }));
+
 };
 
 export const addTimeReport = (timeReport: TimeReport) => {

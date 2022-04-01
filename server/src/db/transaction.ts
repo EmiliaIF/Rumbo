@@ -57,7 +57,8 @@ export const getTransactionsMeta = async (email: string) => {
                       (SELECT * FROM transactions WHERE email = $1 AND status = 0) as nested
                     GROUP BY EXTRACT(month from time), EXTRACT(year from time)
                     ORDER BY year, month`;
-  return await query(sqlQuery, [email]);
+  const res: any = await query(sqlQuery, [email]);
+  return res.map(meta => ({ year: Number(meta.year), month: Number(meta.month) }));
 };
 
 export const addTransaction = (transaction: Transaction) => {

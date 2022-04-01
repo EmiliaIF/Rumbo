@@ -51,7 +51,7 @@ app.get('/:email/project-list', async (req, res) => {
 
   const email = req.params.email;
 
-  const projects = await getProjects(email);
+  const projects = await getProjects();
   res.json(projects);
 })
 

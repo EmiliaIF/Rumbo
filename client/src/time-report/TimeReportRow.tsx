@@ -49,7 +49,6 @@ const TimeReportRow = ({
 
     const renderMoreMenu = () => (
         <>
-            <IconButton icon={EditIcon} intent="none" marginLeft={majorScale(1)} onClick={() => { dispatch(timeReportSlice.actions.editMode(timereport.id)); setShowMoreMenu(false); }} />
             <IconButton icon={TrashIcon} intent="danger" marginLeft={majorScale(1)} onClick={() => { setShowConfirmDelete(true); setShowMoreMenu(false); }} />
             <IconButton icon={CrossIcon} intent="none" marginLeft={majorScale(1)} onClick={() => { setShowMoreMenu(false); }} />
         </>
