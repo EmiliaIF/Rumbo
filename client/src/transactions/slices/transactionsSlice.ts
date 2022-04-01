@@ -3,7 +3,6 @@ import { moveSyntheticComments } from "typescript";
 import { getTransactions, getTransactionsMeta, postTransaction, deleteTransaction } from "../../api/crudTransactions"
 import getDescriptionsByEmail from "../../api/getDescriptionsByEmail";
 import { getVismaImport } from '../../api/getVismaImport';
-import { current } from '@reduxjs/toolkit'
 
 
 import { Transaction, DateFilter, TransactionFilter, TransactionStatus } from "../../types";
@@ -110,7 +109,6 @@ const transactionsSlice = createSlice({
     setFilter(state, action: PayloadAction<DateFilter>) {
       const year: number = action.payload.year;
       //If you change to year where previous month is not available, set max possible month that year
-      console.log(action.payload.year, current(state.meta));
       const month = action.payload.month === 0 ? 0 : state.meta[year].indexOf(action.payload.month) > -1 ? action.payload.month : Math.max(...state.meta[year]);
       state.filter = { year, month, description: state.filter.description };
       state.entities = state.entities.filter((transaction: Transaction) => transaction.status != TransactionStatus.New);
