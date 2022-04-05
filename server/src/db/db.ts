@@ -1,5 +1,5 @@
 import { Pool, PoolConfig } from "pg";
-
+import { Schema, model, connect } from "mongoose";
 
 export const pool = new Pool({
   ssl: false,
@@ -16,3 +16,5 @@ export const query = (query, values = null) => {
     });
   });
 };
+
+connect("mongodb://localhost:27017");
