@@ -5,6 +5,3 @@ export const createEmployee = async (employee: employeeType) => {
   await newEmployee.save();
   return newEmployee;
 };
-
-
-
