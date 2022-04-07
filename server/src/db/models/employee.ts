@@ -1,14 +1,14 @@
 import { Schema, model } from "mongoose";
 
 export interface employeeType {
-  id: number;
+  // id: number;
   email: string;
   firstname: string;
   lastname: string;
 }
 
 const schema = new Schema<employeeType>({
-  id: { type: Number, required: true },
+  // id: { type: Number, required: true },
   email: { type: String, required: true },
   firstname: { type: String, required: true },
   lastname: { type: String, required: true },

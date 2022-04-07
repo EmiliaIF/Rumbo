@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 
 export interface transactionsType {
-  id: Number;
+  // id: Number;
   email: String;
   time: Date;
   amount: Number;
@@ -12,7 +12,7 @@ export interface transactionsType {
 }
 
 const schema = new Schema<transactionsType>({
-  id: { type: Number, required: true },
+  // id: { type: Number, required: true },
   email: { type: String, required: true },
   time: { type: Date, required: true },
   amount: { type: Number, required: true },

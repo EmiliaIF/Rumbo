@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 
 export interface projectType {
-  id: Number;
+  // id: Number;
   customer_name: String;
   project_name: String;
   agreement_ref: String;
@@ -10,7 +10,7 @@ export interface projectType {
 }
 
 const schema = new Schema<projectType>({
-  id: { type: Number, required: true },
+  // id: { type: Number, required: true },
   customer_name: { type: String, required: true },
   project_name: { type: String, required: true },
   agreement_ref: { type: String, required: true },
