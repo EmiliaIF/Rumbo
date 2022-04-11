@@ -6,7 +6,7 @@ import { validationResult } from "express-validator";
 const router = express.Router();
 
 router.delete("/:transactionId", async (req, res) => {
-    if (!req["isAdmin"]) {
+    if (req["isAdmin"]) {
       res.sendStatus(401).end();
     } else {
   
