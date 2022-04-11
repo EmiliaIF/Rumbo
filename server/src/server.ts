@@ -10,6 +10,7 @@ import dotenv from "dotenv";
 // import vismaRouter from "./routes/visma";
 // import timeReportRouter from "./routes/timeReport";
 import employeeRouter from "./routes/employee";
+import { connectToDatabase } from "./db/db";
 
 const env = process.env.ENV || "local";
 dotenv.config({ path: `config/${env}.env` });
@@ -21,6 +22,8 @@ if (env === "local") {
 
 const app = express();
 const port = 4000;
+connectToDatabase();
+
 // // app.use(auth);
 app.use(express.json());
 
