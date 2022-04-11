@@ -1,20 +1,30 @@
-import { Pool, PoolConfig } from "pg";
-import { Schema, model, connect } from "mongoose";
+// import { Pool, PoolConfig } from "pg";
+import mongoose from "mongoose" ;
+import './models/employee.ts';
 
-export const pool = new Pool({
-  ssl: false,
-});
+const uri = 'mongodb://localhost:27017/rumbo';
 
-export const query = (query, values = null) => {
-  return new Promise((resolutionFunc, rejectionFunc) => {
-    pool.query({ text: query, values }, (err, res) => {
-      if (err) {
-        rejectionFunc(err);
-      } else {
-        resolutionFunc(res.rows);
-      }
-    });
-  });
-};
 
-connect("mongodb://localhost:27017");
+  mongoose
+    .connect(uri, {
+      serverSelectionTimeoutMS: 5000,
+    })
+    .catch((err: any) => console.log(err.reason));
+
+// export const pool = new Pool({
+//   ssl: false,
+// });
+
+// export const query = (query, values = null) => {
+//   return new Promise((resolutionFunc, rejectionFunc) => {
+//     pool.query({ text: query, values }, (err, res) => {
+//       if (err) {
+//         rejectionFunc(err);
+//       } else {
+//         resolutionFunc(res.rows);
+//       }
+//     });
+//   });
+// };
+
+// connect("mongodb://localhost:27017");

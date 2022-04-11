@@ -12,7 +12,7 @@ const schema = new Schema<employeeType>({
   email: { type: String, required: true },
   firstname: { type: String, required: true },
   lastname: { type: String, required: true },
-});
+}, {timestamps: true});
 
 const employeeModel = model<employeeType>("Employee", schema);
 

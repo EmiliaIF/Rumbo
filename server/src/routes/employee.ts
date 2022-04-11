@@ -1,14 +1,11 @@
 import express, { Request, Response} from "express";
-import { getEmployees } from "../db/employee";
+import { readEmployees } from "../db/employeeCrud";
 import { employeeType } from "../db/models/employee";
 import { createEmployee } from "../db/employeeCrud";
 
 const router = express.Router();
 
-// router.get("/", async (req, res) => {
-//   const employees = await getEmployees();
-//   res.json(employees);
-// });
+router.get("/", readEmployees)
 
 // mongoose
 router.post("/", async (req: Request, res: Response) => {
@@ -17,3 +14,10 @@ router.post("/", async (req: Request, res: Response) => {
 });
 
 export default router;
+
+
+
+// router.get("/", async (req, res) => {
+//   const employee = await readEmployees;
+//   res.json(employee);
+// });

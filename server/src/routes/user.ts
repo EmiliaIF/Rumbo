@@ -7,7 +7,7 @@ const router = express.Router();
 
 //isAdmin "skapas" i auth.ts -> auth.ts används sedan i server.ts (main-app) -> används sedan här via (?) main-app...
 router.get("/:email/transaction", async (req, res) => {
-  if (req.params.email != req["user"] && !req["isAdmin"]) {
+  if (req.params.email != req["user"] && req["isAdmin"]) {
     res.sendStatus(401).end();
   } else {
     let filter: any = {
@@ -35,7 +35,7 @@ router.get("/:email/transaction", async (req, res) => {
 router.get("/:email/timereport", async (req, res) => {
 
 
-  if (req.params.email != req["user"] && !req["isAdmin"]) {
+  if (req.params.email != req["user"] && req["isAdmin"]) {
     res.sendStatus(401).end();
   } else {
     let filter: any = {
@@ -63,7 +63,7 @@ router.get("/:email/timereport", async (req, res) => {
 });
 
 router.get("/:email/transactionsmeta", async (req, res) => {
-  if (req.params.email != req["user"] && !req["isAdmin"]) {
+  if (req.params.email != req["user"] && req["isAdmin"]) {
     res.sendStatus(401).end();
   } else {
     const transactionsMeta: any = await getTransactionsMeta(req.params.email);
@@ -76,7 +76,7 @@ router.get("/:email/transactionsmeta", async (req, res) => {
 });
 
 router.get("/:email/timereportmeta", async (req, res) => {
-  if (req.params.email != req["user"] && !req["isAdmin"]) {
+  if (req.params.email != req["user"] && req["isAdmin"]) {
     res.sendStatus(401).end();
   } else {
     const timeReportMeta: any = await getTimeReportMeta(req.params.email);
@@ -89,7 +89,7 @@ router.get("/:email/timereportmeta", async (req, res) => {
 })
 
 router.get("/:email/import-visma", async (req, res) => {
-  if (!req["isAdmin"]) {
+  if (req["isAdmin"]) {
     res.sendStatus(401).end();
   } else {
     const salaryTransactions = await getSalaryTransactions(2021, 12, "Liss Carl Martin Jonatan Hallenberg");
