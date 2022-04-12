@@ -2,7 +2,7 @@ import express from "express";
 // // import auth from "./auth";
 import dotenv from "dotenv";
 // import { refreshToken } from "./eaccounting";
-// // import { getProjects } from "./db/project";
+import { getProject } from "./db/projectCrud";
 // // import { getDescriptionsByEmail } from "./db/description";
 
 // import userRouter from "./routes/user";
@@ -38,21 +38,15 @@ app.use("/employees", employeeRouter);
 //   refreshToken();
 // }
 
-// app.get("/project-list", async (req, res) => {
-//   if (req["isAdmin"]) {
-//     res.send(401).end();
-//   } else {
-//     const projects = await getProjects();
-//     res.json(projects);
-//   }
-// });
+app.get("/project-list", getProject);
 
-// app.get("/:email/project-list", async (req, res) => {
-//   const email = req.params.email;
 
-//   const projects = await getProjects();
-//   res.json(projects);
-// });
+app.get("/:email/project-list", async (req, res) => {
+  const email = req.params.email;
+
+  const projects = await getProject;
+  res.json(projects);
+});
 
 // app.get("/user/:email/description", async (req, res) => {
 //   if (req["isAdmin"]) {

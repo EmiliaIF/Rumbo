@@ -21,3 +21,5 @@ const schema = new Schema<projectType>({
 const projectModel = model<projectType>("Project", schema);
 
 export default projectModel;
+
+

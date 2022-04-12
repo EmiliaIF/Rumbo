@@ -78,17 +78,15 @@
 //     );
 // };
 
-// export const updateTimeReport = (timeReport: TimeReport) => {
-
-//     return query(
-//         'UPDATE public.time_reports SET email = $1, time = $2, description = $3, hours = $4, project_id = $5 WHERE id = $6 RETURNING *',
-//         [
-//             timeReport.email,
-//             timeReport.time,
-//             timeReport.description,
-//             timeReport.hours,
-//             timeReport.project_id,
-//             timeReport.id,
-//         ]
-//     );
+// export const updateTimeReport = async (req, res) => {
+// const timereport = await req.body 
+//             timereport.email = req.params.email
+//             timereport.time = req.params.time
+//             timereport.description = req.params.description
+//             timereport.hours = req.params.hours
+//             timereport.project_id = req.params.project_id
+//             timereport.id = req.params.id
+//             timereport.save();
+//             return res.status(200).json(timereport)
+    
 // };

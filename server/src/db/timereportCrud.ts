@@ -5,3 +5,17 @@ export const createTimereport = async (timereport: timeReportsType) => {
   await newTimereport.save();
   return newTimereport;
 };
+
+export const getTimereportById = async (timereportId: string) => {
+  const timereport = timereportModel.findOne({id: timereportId})
+  return await timereport;
+}
+
+export const deleteTimereportById = async (timereportId: string) => {
+  const deleteTimereport = timereportModel.deleteOne({id: timereportId})
+  return await deleteTimereport;
+}
+
+
+
+
