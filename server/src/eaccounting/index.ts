@@ -1,7 +1,7 @@
-import eaccounting from "eaccounting";
+// import eaccounting from "eaccounting";
 import fetch from "node-fetch";
 import { encode } from "js-base64";
-import { getSetting, setSetting } from '../db/setting';
+import { getSetting, createSetting } from '../db/setting';
 
 export const refreshToken = async () => {
   const refreshToken = await getSetting("VISMA_REFRESH_TOKEN");
@@ -19,10 +19,10 @@ export const refreshToken = async () => {
     .then((res) => res.json());
 
   if (response.refresh_token) {
-    await setSetting('VISMA_REFRESH_TOKEN', response.refresh_token);
+    await createSetting('VISMA_REFRESH_TOKEN', response.refresh_token);
   }
   if (response.access_token) {
-    await setSetting('VISMA_ACCESS_TOKEN', response.access_token);
+    await createSetting('VISMA_ACCESS_TOKEN', response.access_token);
   }
 };
 

@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get("/timereport", getTimeReport)
 
-// router.delete("/timereport", getTimeReport)
+router.delete("/timereport", deleteTimereportById)
 
 // router.post("/timereport", getTimeReport)
 

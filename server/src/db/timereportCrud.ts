@@ -1,5 +1,5 @@
 import TimereportsModel, { timeReportsType } from "./models/timereports";
-import { Request, Response } from "express"
+import { Request, response, Response } from "express"
 
 export const createTimereport = async (timereport: timeReportsType) => {
   const newTimereport = new TimereportsModel(timereport);
@@ -7,9 +7,10 @@ export const createTimereport = async (timereport: timeReportsType) => {
   return newTimereport;
 };
 
-export const getTimeReport = async () => {
+export const getTimeReport = async (req: Request, res: Response) => {
   const timereports = await TimereportsModel.find({})
-  return timereports;
+  return res.status(200).json(timereports)
+  // return timereports;
 }
 
 export const getTimereportById = async (timereportId: string) => {
