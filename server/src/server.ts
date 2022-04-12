@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 // import { refreshToken } from "./eaccounting";
 import { getProject } from "./db/projectCrud";
 // // import { getDescriptionsByEmail } from "./db/description";
+import { getTimeReport } from "./db/timereportCrud";
+
 
 // import userRouter from "./routes/user";
 // import transactionRouter from "./routes/transaction";
@@ -39,6 +41,7 @@ app.use("/employees", employeeRouter);
 // }
 
 app.get("/project-list", getProject);
+app.get("/timereport", getTimeReport)
 
 
 app.get("/:email/project-list", async (req, res) => {

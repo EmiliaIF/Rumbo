@@ -1,4 +1,5 @@
 import settingsModel, { SettingsType } from "./models/settings";
+import { Request, Response } from "express"
 
 
 export const createSetting = async (settings: SettingsType) => {
@@ -13,9 +14,8 @@ export const getSetting = async (key: string) => {
 }
 
 export const setSetting = async (req?: Request, res?: string) => {
-  // const settingId = req.params.id;
-  // const setting = await settingId.findOne({id: settingId});
-  const setting = await settingsModel.findOne({ ? });
+  const settingId = req.params.id;
+  const setting = await settingsModel.findOne({id: settingId});
   const result = setting[res];
   return result.length ? result[0].value : null && setting;
 };

@@ -1,3 +1,49 @@
+import express, { Request, Response} from "express";
+import { createTimereport, getTimeReport, getTimereportById, deleteTimereportById, updateTimeReport, getTimeReportMeta} from "../db/timereportCrud";
+import { timeReportsType } from "../db/models/timereports";
+// import { createEmployee } from "../db/employeeCrud";
+
+const router = express.Router();
+
+router.get("/timereport", getTimeReport)
+
+// router.delete("/timereport", getTimeReport)
+
+// router.post("/timereport", getTimeReport)
+
+// router.put("/timereport", getTimeReport)
+
+// mongoose
+// router.post("/", async (req: Request, res: Response) => {
+//   const createdEmployee: EmployeeType = await createEmployee(req.body);
+//   res.status(201).json(createdEmployee);
+// });
+
+export default router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import express from 'express';
 // // import { getTimeReport, addTimeReport, updateTimeReport, getTimeReportById, deleteTimeReportById } from "../db/timereport";
 // import { validationResult } from "express-validator";

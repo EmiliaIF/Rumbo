@@ -20,6 +20,6 @@ const schema = new Schema<timeReportsType>({
   project_id: { type: Number, required: true },
 });
 
-const timeReportsModel = model<timeReportsType>("TimeReports", schema);
+const TimeReportsModel = model<timeReportsType>("TimeReports", schema);
 
-export default timeReportsModel;
+export default TimeReportsModel;
