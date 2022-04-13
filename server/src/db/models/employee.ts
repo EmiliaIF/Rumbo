@@ -14,6 +14,6 @@ const schema = new Schema<EmployeeType>({
   lastname: { type: String, required: true },
 }, {timestamps: true});
 
-const employeeModel = model<EmployeeType>("Employee", schema);
+const employeeModel = model<EmployeeType>("employee", schema);
 
 export default employeeModel;

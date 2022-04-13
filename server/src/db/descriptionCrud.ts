@@ -14,11 +14,11 @@ import Transaction from './models/transactions'
 //   }
 // };
 
-export const getDescriptionByEmail = (email: string) => {
+export const getDescriptionByEmail = (email: String) => {
     const getDescription = Transaction.aggregate([
         {$match: {
             email: email,
         }}
     ])
-    return getDescription
+    return getDescription;
 }

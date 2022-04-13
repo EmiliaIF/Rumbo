@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import { getProject } from "./db/projectCrud";
 // // import { getDescriptionsByEmail } from "./db/description";
 import { getTimeReport } from "./db/timereportCrud";
+import { getTransactions } from "./db/transactionsCrud";
 
 
 // import userRouter from "./routes/user";
@@ -41,7 +42,8 @@ app.use("/employees", employeeRouter);
 // }
 
 app.get("/project-list", getProject);
-app.get("/timereport", getTimeReport)
+app.get("/timereport", getTimeReport);
+app.get("/transactions", getTransactions);
 
 
 app.get("/:email/project-list", async (req, res) => {

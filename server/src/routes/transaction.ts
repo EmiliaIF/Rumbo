@@ -1,9 +1,16 @@
-// import express from 'express';
-// // import { getTransactionById, deleteTransactionById, getTransactions, addTransaction } from "../db/transaction";
+import express from 'express';
+// import { getTransactionById, deleteTransactionById, getTransactions, addTransaction } from "../db/transactionsCrud";
+import { getDescriptionByEmail } from '../db/descriptionCrud'
 // import { validationResult } from "express-validator";
+import { getTransactions } from '../db/transactionsCrud'
+
+const router = express.Router();
 
 
-// const router = express.Router();
+// router.get("/getemail", getDescriptionByEmail)
+
+router.get("/transactions", getTransactions)
+
 
 // router.delete("/:transactionId", async (req, res) => {
 //     if (req["isAdmin"]) {
@@ -66,4 +73,4 @@
 //     }
 //   });
 
-//   export default router;
+  export default router;

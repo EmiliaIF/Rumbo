@@ -18,7 +18,7 @@ const schema = new Schema<projectType>({
   created_at: { type: Date, required: true },
 });
 
-const projectModel = model<projectType>("Project", schema);
+const projectModel = model<projectType>("project", schema);
 
 export default projectModel;
 

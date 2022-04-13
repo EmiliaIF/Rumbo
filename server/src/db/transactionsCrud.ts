@@ -20,12 +20,12 @@ export const getTransactions = async () => {
   return transactions;
 }
 
-export const getTransactionById = async (transactionId: string) => {
+export const getTransactionById = async (transactionId: String) => {
   const transaction = transactionsModel.findOne({id: transactionId})
   return await transaction;
 }
 
-export const deleteTransactionById = async (transactionId: string) => {
+export const deleteTransactionById = async (transactionId: String) => {
   const deleteTransaction = transactionsModel.deleteOne({id: transactionId})
   return await deleteTransaction;
 }
