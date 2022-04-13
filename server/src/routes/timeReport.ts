@@ -1,21 +1,19 @@
 import express, { Request, Response} from "express";
-import { createTimereport, getTimeReport, getTimereportById, deleteTimereportById, updateTimeReport, getTimeReportMeta} from "../db/timereportCrud";
+import { createTimereport, getTimeReport, getTimereportById, deleteTimereportById, updateTimeReport,} from "../db/timereportCrud";
 import { timeReportsType } from "../db/models/timereports";
 // import { createEmployee } from "../db/employeeCrud";
 
 const router = express.Router();
 
 router.get("/timereport", getTimeReport)
-
+router.get("/getTimereportById", getTimereportById)
 router.delete("/timereport", deleteTimereportById)
-
-// router.post("/timereport", getTimeReport)
-
-// router.put("/timereport", getTimeReport)
+router.post("/createTimereport", createTimereport)
+router.put("/updateTimeReport", updateTimeReport)
 
 // mongoose
 // router.post("/", async (req: Request, res: Response) => {
-//   const createdEmployee: EmployeeType = await createEmployee(req.body);
+//   const createdEmployee: EmployeeType = await createEmployee(req.body); getTimereport(filter.then)
 //   res.status(201).json(createdEmployee);
 // });
 

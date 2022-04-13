@@ -52,10 +52,10 @@ router.get("/:email/timereport", async (req, res) => {
     if (req.query.project_id) {
       filter.project = req.query.project_id;
     }
-    const timeReport = await getTimeReport(req,filter);
-    console.log(timeReport);
-    const mappedReports = timeReport.map((timereport) => ({ ...timereport, hours: Number(timereport.hours) }))
-    res.json(mappedReports);
+    // const timeReport = await getTimeReport(req,filter);
+    // console.log(timeReport);
+    // const mappedReports = timeReport.map((timereport) => ({ ...timereport, hours: Number(timereport.hours) }))
+    // res.json(mappedReports);
   }
 
 });
