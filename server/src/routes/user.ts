@@ -1,11 +1,13 @@
 import express from "express";
-import { getTransactions, getTransactionsMeta, filterOutExistingTransactions } from "../db/transaction";
-import { getTimeReport, getTimeReportMeta } from "../db/timereportCrud";
-import { getSalaryTransactions } from "../eaccounting";
+import 'rxjs/add/operator/map';
+import { getTransactions, getTransactionsMeta } from "../db/transactionsCrud";
+import { getTimeReport, getTimeReportMeta, } from "../db/timereportCrud";
+// import { getDescriptionByEmail } from '../db/descriptionCrud'
+// import { getSalaryTransactions } from "../eaccounting";
 
 const router = express.Router();
 
-//isAdmin "skapas" i auth.ts -> auth.ts används sedan i server.ts (main-app) -> används sedan här via (?) main-app...
+
 router.get("/:email/transaction", async (req, res) => {
   if (req.params.email != req["user"] && req["isAdmin"]) {
     res.sendStatus(401).end();
@@ -25,7 +27,7 @@ router.get("/:email/transaction", async (req, res) => {
     if (req.query.description) {
       filter.description = req.query.description;
     }
-    const transactions = await getTransactions(filter);
+    const transactions = await getTransactions(req, filter);
     res.json(transactions);
   }
 });
@@ -50,7 +52,7 @@ router.get("/:email/timereport", async (req, res) => {
     if (req.query.project_id) {
       filter.project = req.query.project_id;
     }
-    const timeReport = await getTimeReport(filter);
+    const timeReport = await getTimeReport(req,filter);
     console.log(timeReport);
     const mappedReports = timeReport.map((timereport) => ({ ...timereport, hours: Number(timereport.hours) }))
     res.json(mappedReports);
@@ -84,15 +86,16 @@ router.get("/:email/timereportmeta", async (req, res) => {
   }
 })
 
-router.get("/:email/import-visma", async (req, res) => {
-  if (req["isAdmin"]) {
-    res.sendStatus(401).end();
-  } else {
-    const salaryTransactions = await getSalaryTransactions(2021, 12, "Liss Carl Martin Jonatan Hallenberg");
-    console.log('salaryTransactions', salaryTransactions);
-    const filteredTransactions = await filterOutExistingTransactions(salaryTransactions);
-    res.json(filteredTransactions);
-  }
-})
+// router.get("/:email/import-visma", async (req, res) => {
+//   if (req["isAdmin"]) {
+//     res.sendStatus(401).end();
+//   } else {
+//     const salaryTransactions = await getSalaryTransactions(2021, 12, "Liss Carl Martin Jonatan Hallenberg");
+//     console.log('salaryTransactions', salaryTransactions);
+//     const filteredTransactions = await filterOutExistingTransactions(salaryTransactions);
+//     res.json(filteredTransactions);
+//   }
+// })
+
 
 export default router;

@@ -93,11 +93,7 @@ export const updateTimeReport = async (req: Request, res: Response) => {
     }
 }
 
-// vänta med denna
-// export const getTimeReportMeta = async () => {
-//   const timereports = timereportModel.find({})
-//   return await timereports;
-// }
+
 
 export const getTimeReportMeta = async (email: string) => {
   if (!email) {

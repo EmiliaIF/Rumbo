@@ -47,37 +47,37 @@ export const deleteTransactionById = async (transactionId: String) => {
   return await deleteTransaction;
 }
 
-// export const getTransactionsMeta = async (email: string) => {
-//   if (!email) {
-//       return [];
-//   }
-//   const res = await transactionsModel.aggregate([
-//       { $match: { email } },
-//       {
-//           $project: {
-//               _id: 1,
-//               time: 1,
-//               email: 1,
-//               year: { $substr: ['$time', 0, 4] },
-//               month: { $substr: ['$time', 5, 2] },
-//           }
-//       },
-//       {
-//           $group: {
-//               _id: {
-//                   year: "$year",
-//                   month: "$month"
-//               },
-//           },
-//       },
-//       {
-//           $project: {
-//               year: "$_id.year",
-//               month: "$_id.month",
-//               _id: 0
-//           }
-//       }]);
+export const getTransactionsMeta = async (email: string) => {
+  if (!email) {
+      return [];
+  }
+  const res = await transactionsModel.aggregate([
+      { $match: { email } },
+      {
+          $project: {
+              _id: 1,
+              time: 1,
+              email: 1,
+              year: { $substr: ['$time', 0, 4] },
+              month: { $substr: ['$time', 5, 2] },
+          }
+      },
+      {
+          $group: {
+              _id: {
+                  year: "$year",
+                  month: "$month"
+              },
+          },
+      },
+      {
+          $project: {
+              year: "$_id.year",
+              month: "$_id.month",
+              _id: 0
+          }
+      }]);
 
-//   return res.map(meta => ({ year: Number(meta.year), month: Number(meta.month) }));
-// };
+  return res.map(meta => ({ year: Number(meta.year), month: Number(meta.month) }));
+};
 
