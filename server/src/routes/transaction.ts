@@ -2,7 +2,7 @@ import express from 'express';
 // import { getTransactionById, deleteTransactionById, getTransactions, addTransaction } from "../db/transactionsCrud";
 import { getDescriptionByEmail } from '../db/descriptionCrud'
 // import { validationResult } from "express-validator";
-import { getTransactions } from '../db/transactionsCrud'
+import { getTransactions, getTransactionById, deleteTransactionById } from '../db/transactionsCrud'
 
 const router = express.Router();
 
@@ -10,6 +10,8 @@ const router = express.Router();
 // router.get("/getemail", getDescriptionByEmail)
 
 router.get("/transactions", getTransactions)
+router.get("/transactions/:transactionId", getTransactionById)
+router.delete("/transactions/?id", deleteTransactionById)
 
 
 // router.delete("/:transactionId", async (req, res) => {

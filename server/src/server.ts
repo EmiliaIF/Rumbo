@@ -13,6 +13,7 @@ import { getTransactions } from "./db/transactionsCrud";
 // import vismaRouter from "./routes/visma";
 // import timeReportRouter from "./routes/timeReport";
 import employeeRouter from "./routes/employee";
+import transactionsRouter from "./routes/transaction";
 import { connectToDatabase } from "./db/db";
 
 const env = process.env.ENV || "local";
@@ -42,8 +43,9 @@ app.use("/employees", employeeRouter);
 // }
 
 app.get("/project-list", getProject);
+app.get("/transactions", transactionsRouter);
+app.get("/transactions", transactionsRouter);
 app.get("/timereport", getTimeReport);
-app.get("/transactions", getTransactions);
 
 
 app.get("/:email/project-list", async (req, res) => {

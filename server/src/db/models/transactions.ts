@@ -7,8 +7,14 @@ export interface transactionsType {
   amount: Number;
   description: String;
   created_at: Date;
-  status: Number;
+  status: TransactionStatus;
   source_reference: String;
+}
+
+export enum TransactionStatus{
+  Final = 0,
+  Preliminary = 1,
+  Rejected = 2
 }
 
 const schema = new Schema<transactionsType>({
@@ -18,7 +24,9 @@ const schema = new Schema<transactionsType>({
   amount: { type: Number, required: true },
   description: { type: String, required: true },
   created_at: { type: Date, required: true },
-  status: { type: Number, required: true },
+  status: { type: Number,
+    enum: [0, 1, 2],
+    default: 0 },
   source_reference: { type: String, required: true },
 });
 
