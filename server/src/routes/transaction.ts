@@ -5,9 +5,29 @@ import { validationResult } from "express-validator";
 
 const router = express.Router();
 
+<<<<<<< HEAD
 router.post("/transactions", createTransaction)
 router.get("/transactions", getTransactions)
 router.get("/transactions/?id", getTransactionById)
+=======
+
+// router.get("/getemail", getDescriptionByEmail)
+
+router.get("/", getTransactions)
+router.get("/:transactionId", getTransactionById)
+
+
+// router.get('/transactions/:id',  (req, res) => {
+//     Item.find({id:req.params.id}, (err, items) => {
+//      if (err) res.status(500).send(error)
+ 
+//      res.status(200).json(items);
+//    });
+//  });
+
+
+
+>>>>>>> bee802b (Add code)
 router.delete("/transactions/?id", deleteTransactionById)
 
 

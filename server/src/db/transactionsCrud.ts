@@ -37,9 +37,10 @@ export const getTransactions = async (req: Request, res: Response) => {
   return res.status(200).json(transactions)
 }
 
-export const getTransactionById = async (transactionId: String) => {
-  const transaction = transactionsModel.findOne({id: transactionId})
-  return await transaction;
+export const getTransactionById = async (req: Request, res: Response) => {
+  const transaction = await transactionsModel.findById(req.params.transactionId)
+  return res.status(200).json(transaction);
+
 }
 
 export const deleteTransactionById = async (transactionId: String) => {

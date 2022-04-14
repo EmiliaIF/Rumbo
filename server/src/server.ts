@@ -43,8 +43,7 @@ app.use("/employees", employeeRouter);
 // }
 
 app.get("/project-list", getProject);
-app.get("/transactions", transactionsRouter);
-app.get("/transactions", transactionsRouter);
+app.use("/transactions", transactionsRouter);
 app.get("/timereport", getTimeReport);
 
 
