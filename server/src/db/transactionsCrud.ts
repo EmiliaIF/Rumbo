@@ -40,12 +40,12 @@ export const getTransactions = async (req: Request, res: Response) => {
 export const getTransactionById = async (req: Request, res: Response) => {
   const transaction = await transactionsModel.findById(req.params.transactionId)
   return res.status(200).json(transaction);
-
 }
 
-export const deleteTransactionById = async (transactionId: String) => {
-  const deleteTransaction = transactionsModel.deleteOne({id: transactionId})
-  return await deleteTransaction;
+export const deleteTransactionById = async (transactionId: string) => {
+  const deleteTransaction = await transactionsModel.deleteOne({'_ id': transactionId})
+  // console.log(transactionId);
+  return  deleteTransaction;
 }
 
 export const getTransactionsMeta = async (email: string) => {
