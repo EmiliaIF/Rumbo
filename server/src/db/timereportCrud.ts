@@ -69,13 +69,13 @@ export const getTimeReport = async (req: Request, res: Response) => {
   return res.status(200).json(timereports)
 }
 
-export const getTimereportById = async (timereportId: String) => {
-  const timereport = TimereportsModel.findOne({id: timereportId})
-  return await timereport;
+export const getTimereportById = async (req: Request, res: Response) => {
+  const timereport = TimereportsModel.findById(req.params.timereportId)
+  return res.status(200).json(timereport);
 }
 
 export const deleteTimereportById = async (timereportId: String) => {
-  const deleteTimereport = TimereportsModel.deleteOne({id: timereportId})
+  const deleteTimereport = TimereportsModel.deleteOne({'_ id': timereportId})
   return await deleteTimereport;
 }
 
