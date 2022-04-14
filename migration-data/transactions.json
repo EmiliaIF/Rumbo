@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "email": "kalle.anka@gmail.com",
+        "amount": 1,
+        "description": "test",
+        "time": "2021-10-20T00:00:00"
+    },
+    {
+        "id": 2,
+        "email": "daniel.persson@iths.se",
+        "amount": 2,
+        "description": "test",
+        "time": "2022-02-14T00:00:00"
+    },
+    {
+        "id": 3,
+        "email": "daniel.persson@gmail.com",
+        "amount": 3,
+        "description": "test",
+        "time": "2021-14-05T00:00:00"
+    },
+    {
+        "id": 4,
+        "email": "testing.person@gmail.com",
+        "amount": 4,
+        "description": "test",
+        "time": "2022-04-13T00:00:00"
+    }
+]

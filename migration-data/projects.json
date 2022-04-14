@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "email": "kalle.anka@gmail.com",
+        "time": "2022-01-20T00:00:00",
+        "amount": 1,
+        "description": "dsadsa",
+        "created_at": "2022-04-10T07:57:33.647331+00:00",
+        "status": 0,
+        "source_reference": null
+    },
+    {
+        "id": 2,
+        "email": "daniel.persson@iths.se",
+        "time": "2022-01-09T00:00:00",
+        "amount": 2,
+        "description": "ewqeqwe",
+        "created_at": "2022-04-10T08:34:52.764664+00:00",
+        "status": 0,
+        "source_reference": null
+    },
+    {
+        "id": 3,
+        "email": "test.person@gmail.com",
+        "time": "2022-01-05T00:00:00",
+        "amount": 3,
+        "description": "test",
+        "created_at": "2022-04-14T08:33:04.398588+00:00",
+        "status": 0,
+        "source_reference": null
+    },
+    {
+        "id": 4,
+        "email": "testing.person@gmail.com",
+        "time": "2022-01-31T00:00:00",
+        "amount": 4,
+        "description": "testing",
+        "created_at": "2022-04-14T08:32:02.067713+00:00",
+        "status": 0,
+        "source_reference": null
+    }
+]
